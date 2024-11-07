@@ -1,5 +1,5 @@
 <?php
-include "conexao.php";
+include "../conexao.php";
 $conexao = conectar();
 
 $produto = json_decode(file_get_contents("php://input"));

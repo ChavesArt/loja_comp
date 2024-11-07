@@ -1,6 +1,6 @@
 <?php
 $id = $_GET['id_produto'];
-require_once "conexao.php";
+require_once "../conexao.php";
 
 $conexao = conectar();
 

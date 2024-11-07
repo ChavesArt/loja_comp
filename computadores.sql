@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `quantidade` int NOT NULL,
   `preco` float NOT NULL,
   PRIMARY KEY (`id_produto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

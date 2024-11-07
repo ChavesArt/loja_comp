@@ -24,7 +24,7 @@
           <h1 class="center">Loja de computadores</h1>
         </div>
 
-        <form onsubmit="return salvarUsuario(event);">
+        <form onsubmit="return salvarProduto(event);">
 
           <div class="row">
             <div class="input-field col s9">
@@ -104,7 +104,7 @@
             </tr>
           </thead>
 
-          <tbody id="usuarios">
+          <tbody id="Produtos">
 
           </tbody>
         </table>
