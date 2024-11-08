@@ -8,18 +8,16 @@ function salvarProduto(event) {
     let inputNomeCliente = document.getElementsByName('nomeCliente')[0];
     let nomeCliente = inputNomeCliente.value;
 
-    let inputDataNasc = document.getElementsByName('dataNasc')[0];
-    let DataNasc = inputDataNasc.value;
-
     let inputQuantidade = document.getElementsByName('quantidade')[0];
     let Quantidade = inputQuantidade.value;
+    
     let inputPreco = document.getElementsByName('preco')[0];
-    let Preco = inputpreco.value;
+    let Preco = inputPreco.value;
 
     if (idProduto == "") {
-        cadastrar(idProduto, nomeCliente, DataNasc, Quantidade, Preco);
+        cadastrar(idProduto, nomeCliente, Quantidade, Preco);
     } else {
-        alterar(idProduto, nomeCliente, DataNasc, Quantidade, Preco);
+        alterar(idProduto, nomeCliente, Quantidade, Preco);
     }
     document.getElementsByTagName('form')[0].reset()
 }
@@ -28,15 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
     listarTodos();
 });
 
-function cadastrar(idProduto, nomeCliente, DataNasc, Quantidade, Preco) {
-    fetch('inserir.php',
+function cadastrar(idProduto, nomeCliente, Quantidade, Preco) {
+    fetch('crud/inserir.php',
         {
             method: 'POST',
             body: JSON.stringify({
 
                 id_produto: idProduto,
                 nomeCliente: nomeCliente,
-                dataNasc: DataNasc,
                 Quantidade: Quantidade,
                 preco: Preco
 
@@ -48,15 +45,14 @@ function cadastrar(idProduto, nomeCliente, DataNasc, Quantidade, Preco) {
         .catch(error => console.log(error));
 }
 
-function alterar(idProduto, nomeCliente, DataNasc, Quantidade, Preco) {
-    fetch('alterar.php',
+function alterar(idProduto, nomeCliente, Quantidade, Preco) {
+    fetch('crud/alterar.php',
         {
             method: 'POST',
             body: JSON.stringify({
 
                 id_produto: idProduto,
                 nomeCliente: nomeCliente,
-                dataNasc: DataNasc,
                 Quantidade: Quantidade,
                 preco: Preco
 
@@ -73,7 +69,6 @@ function alterarProduto(produto) {
     for (const tr of tbody.children) {
         if (tr.children[0].innerHTML == produto.id_produto) {
             tr.children[1].innerHTML = produto.nomeCliente;
-            tr.children[2].innerHTML = produto.dataNasc;
             tr.children[3].innerHTML = produto.Quantidade;
             tr.children[4].innerHTML = produto.preco;
         }
@@ -81,7 +76,7 @@ function alterarProduto(produto) {
 }
 
 function listarTodos() {
-    fetch("listar.php", {
+    fetch("crud/listar.php", {
         method: "GET",
         headers: { 'Content-Type': "application/json; charset=UTF-8" }
     }
@@ -90,7 +85,7 @@ function listarTodos() {
         // erro no http
         .catch(error => console.log(error));
 }
-function inserirProdutos(produtos) {
+function inserirProduto(produtos) {
     let tbody = document.getElementById('Produtos');
 
     let tr = document.createElement('tr');
@@ -98,10 +93,7 @@ function inserirProdutos(produtos) {
     tdId.innerHTML = produtos.id_produto;
 
     let tdNomeCliente = document.createElement('td');
-    tdNomeCliente.innerHTML = produtos.nomeCleinte;
-
-    let tdDataNasc = document.createElement('td');
-    tdDataNasc.innerHTML = produtos.dataNasc;
+    tdNomeCliente.innerHTML = produtos.nomeCliente;
     
     let tdQuantidade = document.createElement('td');
     tdQuantidade.innerHTML = produtos.Quantidade;
@@ -124,7 +116,6 @@ function inserirProdutos(produtos) {
 
     tr.appendChild(tdId);
     tr.appendChild(tdNomeCliente);
-    tr.appendChild(tdDataNasc);
     tr.appendChild(tdQuantidade);
     tr.appendChild(tdPreco);
     tr.appendChild(tdAlterar);
@@ -143,7 +134,7 @@ function inserirProdutos(produtos) {
 function buscarProduto(evt) {
     let id_produto = evt.currentTarget.id_produto;
 
-    fetch('buscar.php?id_produto=' + id_produto,
+    fetch('crud/buscar.php?id_produto=' + id_produto,
         {
             method: "GET",
             headers: { 'Content-Type': "application/json; charset=UTF-8" }
@@ -160,9 +151,6 @@ function preencheForm(produto) {
     let inputNomeCliente = document.getElementsByName('nomeCliente')[0];
     inputNomeCliente.value = produto.nomeCliente;
 
-    let inputDataNasc = document.getElementsByName('dataNasc')[0];
-    inputDataNasc.value = produto.dataNasc;
-    
     let inputQuantidade = document.getElementsByName('quantidade')[0];
     inputQuantidade.value = produto.Quantidade;
     
@@ -177,7 +165,7 @@ function excluir(evt) {
     if (excluir) {
 
 
-        fetch('excluir.php?id_produto=' + id_produto,
+        fetch('crud/excluir.php?id_produto=' + id_produto,
             {
                 method: "GET",
                 headers: { 'Content-Type': "application/json; charset=UTF-8" }

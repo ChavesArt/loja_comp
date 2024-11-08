@@ -1,16 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tela inicial</title>
-  <?php include "links.php"; ?>
-
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Computadores</title>
+    <!-- Link para o CSS do Materialize -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <style>
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #0288d1;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
         }
 
         .card-title {
@@ -34,7 +46,7 @@
         }
 
         .footer {
-            background-color: black;
+            background-color: #0288d1;
             color: white;
             text-align: center;
             padding: 10px;
@@ -49,22 +61,22 @@
             font-weight: bold;
         }
     </style>
-
 </head>
 
 <body>
 
-  <?php include "navbar.php"; ?>
+    <header>
+        <h1>Loja de Computadores</h1>
+        <p>Encontre o computador ideal para você!</p>
+    </header>
 
-  <main>
- 
-  <div class="container">
+    <div class="container">
         <div class="row">
             <!-- Cartão 1 -->
             <div class="col s12 m6 l4 product-card">
                 <div class="card">
                     <div class="card-image">
-                        <img src="img/PC_gamer.jpg" alt="Computador 1">
+                        <img src="https://via.placeholder.com/300x200?text=Computador+1" alt="Computador 1">
                     </div>
                     <div class="card-content">
                         <span class="card-title">Computador Gamer XYZ</span>
@@ -82,7 +94,7 @@
             <div class="col s12 m6 l4 product-card">
                 <div class="card">
                     <div class="card-image">
-                        <img src="img/notebook.jpg" alt="Computador 2">
+                        <img src="https://via.placeholder.com/300x200?text=Computador+2" alt="Computador 2">
                     </div>
                     <div class="card-content">
                         <span class="card-title">Notebook Ultrafino ABC</span>
@@ -100,7 +112,7 @@
             <div class="col s12 m6 l4 product-card">
                 <div class="card">
                     <div class="card-image">
-                        <img src="img/PC_desktop.jpg" alt="Computador 3">
+                        <img src="https://via.placeholder.com/300x200?text=Computador+3" alt="Computador 3">
                     </div>
                     <div class="card-content">
                         <span class="card-title">PC Desktop ABC</span>
@@ -113,8 +125,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-               <!-- Cartão 4 -->
+    <!-- Cartão 4 -->
     <div class="col s12 m6 l4 product-card">
         <div class="card">
             <div class="card-image">
@@ -149,52 +163,16 @@
             </div>
         </div>
     </div>
-    
-        </div>
+    </div>
     </div>
 
-    <div class="fixed-action-btn">
-        <a class="btn-floating btn-large red" href="admin.php">
-            <i class="material-icons">create</i>
-        </a>
-    </div>
-
-  </main>
-  
-  <div class="footer">
+    <!-- Footer -->
+    <div class="footer">
         <p>&copy; 2024 Loja de Computadores | <a href="#">Privacidade</a></p>
     </div>
 
-  <script>
-    // Inicializa o date picker
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.datepicker');
-      M.Datepicker.init(elems, {
-        autoClose: true, // Fecha o date picker automaticamente após a seleção
-        format: 'dd/mm/yyyy', // Define o formato da data
-        yearRange: [1900, 2100], // Define o intervalo de anos
-
-
-        onSelect: function(date) {
-          console.log('Data selecionada: ', date);
-        }
-      });
-    });
-
-
-
-
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('select');
-      var instances = M.FormSelect.init(elems);
-    });
-  </script>
-
-  <!-- Footer -->
-
     <!-- Link para o JS do Materialize (não será utilizado neste caso) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
 </body>
 
 </html>
