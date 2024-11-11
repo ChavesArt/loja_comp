@@ -49,7 +49,7 @@
                         <div class="input-field col s6 offset-s3">
                             <i class="material-icons prefix">lock</i>
                             <input id="id" type="text" class="validate" name="id_produto">
-                            <label for="nome">ID</label>
+                            <label for="produto">ID</label>
                         </div>
 
 
@@ -57,18 +57,10 @@
 
                         <div class="input-field col s6 offset-s3">
                             <i class="material-icons prefix"> business_center</i>
-                            <input id="nomeCliente" type="text" class="validate" name="nomeCliente" pattern="^[A-Za-zÀ-ÿ]+$" required>
-                            <label for="nomeCliente">Nome do produto</label>
+                            <input id="produto" type="text" class="validate" name="produto" pattern="^[A-Za-zÀ-ÿ]+$" required>
+                            <label for="produto">Nome do produto</label>
                             <span class="helper-text" data-error="Preencha o campo sem usar números."> </span>
                         </div>
-
-
-
-                        <!-- <div class="input-field col s9">
-              <i class="material-icons prefix"> description</i>
-              <input id="dataNasc" type="text" class="datepicker" name="dataNasc">
-              <label for="dataNasc">Data nascimento</label>
-            </div> -->
 
                         <div class="input-field col s6 offset-s3">
                             <i class="material-icons prefix"> add</i>
@@ -100,7 +92,7 @@
                                 </p>
                             </div>
 
-                            <!-- <div> -->
+                            <!-- <div>
                                 <label for="id_produto">ID:</label>
                                 <input type="number" name="id_usuario" id="id_usuario"> <br>
 
@@ -117,16 +109,15 @@
                                 <input type="number" name="preco" id="preco"> <br>
 
                                 <input type="submit" value="Salvar Usuário">
-                            <!-- </div> -->
+                            </div> -->
                 </form>
 
                 <table style="margin-top: 30px;">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nome</th>
+                            <th>produto</th>
                             <th>quantidade</th>
-                            <th>descrição</th>
                             <th>preço</th>
                             <th colspan="2">Opções</th>
                         </tr>
@@ -173,7 +164,7 @@
 
     <!-- Link para o JS do Materialize (não será utilizado neste caso) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+    <script src="javascript/scripts.js"></script>
 </body>
 
 </html>

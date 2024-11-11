@@ -5,8 +5,8 @@ function salvarProduto(event) {
     let inputIdProduto = document.getElementsByName('id_produto')[0];
     let idProduto = inputIdProduto.value;
 
-    let inputNomeCliente = document.getElementsByName('nomeCliente')[0];
-    let nomeCliente = inputNomeCliente.value;
+    let inputProduto = document.getElementsByName('produto')[0];
+    let Produto = inputProduto.value;
 
     let inputQuantidade = document.getElementsByName('quantidade')[0];
     let Quantidade = inputQuantidade.value;
@@ -15,9 +15,9 @@ function salvarProduto(event) {
     let Preco = inputPreco.value;
 
     if (idProduto == "") {
-        cadastrar(idProduto, nomeCliente, Quantidade, Preco);
+        cadastrar(idProduto, Produto, Quantidade, Preco);
     } else {
-        alterar(idProduto, nomeCliente, Quantidade, Preco);
+        alterar(idProduto, Produto, Quantidade, Preco);
     }
     document.getElementsByTagName('form')[0].reset()
 }
@@ -26,14 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
     listarTodos();
 });
 
-function cadastrar(idProduto, nomeCliente, Quantidade, Preco) {
+function cadastrar(idProduto, Produto, Quantidade, Preco) {
     fetch('crud/inserir.php',
         {
             method: 'POST',
             body: JSON.stringify({
 
                 id_produto: idProduto,
-                nomeCliente: nomeCliente,
+                produto: Produto,
                 Quantidade: Quantidade,
                 preco: Preco
 
@@ -41,18 +41,18 @@ function cadastrar(idProduto, nomeCliente, Quantidade, Preco) {
             headers: { 'Content-Type': "application/json; charset=UTF-8" }
         }
     ).then(response => response.json())
-        .then(produto => inserirUsuario(produto))
+        .then(produto => inserirProduto(produto))
         .catch(error => console.log(error));
 }
 
-function alterar(idProduto, nomeCliente, Quantidade, Preco) {
+function alterar(idProduto, Produto, Quantidade, Preco) {
     fetch('crud/alterar.php',
         {
             method: 'POST',
             body: JSON.stringify({
 
                 id_produto: idProduto,
-                nomeCliente: nomeCliente,
+                produto: Produto,
                 Quantidade: Quantidade,
                 preco: Preco
 
@@ -68,7 +68,7 @@ function alterarProduto(produto) {
     let tbody = document.getElementById('Produtos');
     for (const tr of tbody.children) {
         if (tr.children[0].innerHTML == produto.id_produto) {
-            tr.children[1].innerHTML = produto.nomeCliente;
+            tr.children[1].innerHTML = produto.produto;
             tr.children[3].innerHTML = produto.Quantidade;
             tr.children[4].innerHTML = produto.preco;
         }
@@ -92,11 +92,11 @@ function inserirProduto(produtos) {
     let tdId = document.createElement('td');
     tdId.innerHTML = produtos.id_produto;
 
-    let tdNomeCliente = document.createElement('td');
-    tdNomeCliente.innerHTML = produtos.nomeCliente;
+    let tdProduto = document.createElement('td');
+    tdProduto.innerHTML = produtos.produto;
     
     let tdQuantidade = document.createElement('td');
-    tdQuantidade.innerHTML = produtos.Quantidade;
+    tdQuantidade.innerHTML = produtos.quantidade;
     
     let tdPreco = document.createElement('td');
     tdPreco.innerHTML = produtos.preco;
@@ -115,7 +115,7 @@ function inserirProduto(produtos) {
     tdExcluir.appendChild(btnExcluir);
 
     tr.appendChild(tdId);
-    tr.appendChild(tdNomeCliente);
+    tr.appendChild(tdProduto);
     tr.appendChild(tdQuantidade);
     tr.appendChild(tdPreco);
     tr.appendChild(tdAlterar);
@@ -148,11 +148,11 @@ function preencheForm(produto) {
     let inputIdProduto = document.getElementsByName('id_produto')[0];
     inputIdProduto.value = produto.id_produto;
 
-    let inputNomeCliente = document.getElementsByName('nomeCliente')[0];
-    inputNomeCliente.value = produto.nomeCliente;
+    let inputProduto = document.getElementsByName('produto')[0];
+    inputProduto.value = produto.produto;
 
     let inputQuantidade = document.getElementsByName('quantidade')[0];
-    inputQuantidade.value = produto.Quantidade;
+    inputQuantidade.value = produto.quantidade;
     
     let inputPreco = document.getElementsByName('preco')[0];
     inputPreco.value = produto.preco;

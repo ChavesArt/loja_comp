@@ -4,7 +4,7 @@ $conexao = conectar();
 
 $produto = json_decode(file_get_contents("php://input"));
 
-$sql = "INSERT INTO produto(nome,quantidade,descricao) values( '$produto->nome', '$produto->quantidade','$produto->descricao')";
+$sql = "INSERT INTO produto(produto,quantidade,preco) values( '$produto->produto', '$produto->Quantidade','$produto->preco')";
 
 executarSQL($conexao,$sql);
 $produto->id_produto = mysqli_insert_id($conexao);
