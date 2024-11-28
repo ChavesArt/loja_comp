@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 21-Out-2024 às 16:30
+-- Tempo de geração: 28-Nov-2024 às 18:29
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -30,12 +30,20 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `produto`;
 CREATE TABLE IF NOT EXISTS `produto` (
   `id_produto` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(255) NOT NULL,
-  `descricao` varchar(255) NOT NULL,
+  `produto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `quantidade` int NOT NULL,
   `preco` float NOT NULL,
   PRIMARY KEY (`id_produto`)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `produto`
+--
+
+INSERT INTO `produto` (`id_produto`, `produto`, `quantidade`, `preco`) VALUES
+(10, 'bbbbbbbbbbb', 66666666, 77777800),
+(11, 'RAM', 88888, 8888890),
+(12, 'AA', 90, 909);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
